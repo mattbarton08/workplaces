@@ -1,0 +1,49 @@
+Sub RemoveDollarSignFromSheet()
+    Dim rng As Range
+    Dim cell As Range
+    
+    ' Set the range as the entire sheet
+    Set rng = ActiveSheet.UsedRange
+    
+    ' Loop through each cell in the range
+    For Each cell In rng
+        ' Check if the cell contains a dollar sign
+        If InStr(cell.Value, "- ") > 0 Then
+            ' Remove the dollar sign
+            cell.Value = Replace(cell.Value, "- ", "")
+        End If
+    Next cell
+End Sub
+
+Sub RemoveHyphenCells()
+    Dim rng As Range
+    Dim cell As Range
+    
+    ' Set the range as the entire sheet
+    Set rng = ActiveSheet.UsedRange
+    
+    ' Loop through each cell in the range
+    For Each cell In rng
+        ' Check if the cell contains only a hyphen
+        If Trim(cell.Value) = "-" Then
+            cell.ClearContents
+        End If
+    Next cell
+End Sub
+
+Sub ReplaceCharacter()
+    Dim rng As Range
+    Dim cell As Range
+    
+    ' Set the range as the entire sheet
+    Set rng = ActiveSheet.UsedRange
+    
+    ' Loop through each cell in the range
+    For Each cell In rng
+        ' Check if the cell contains the character Õ
+        If InStr(1, cell.Value, "Ó") > 0 Then
+            ' Replace Õ with '
+            cell.Value = Replace(cell.Value, "Ó", "'")
+        End If
+    Next cell
+End Sub
